@@ -3,9 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+            background-color: #444;
+        }
+
+        .nav-links a:hover {
+            background-color: #555;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @media (min-width: 600px) {
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .hamburger {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="navbar">
+        <div class="hamburger" onclick="toggleNav()">☰</div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#betriebe">Meine Betriebe</a></li>
+        <li><a href="#reports">Reports</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="#vertraege">Verträge</a></li>
+        <li><a href="#dokumente">Dokumente</a></li>
+    </ul>
+
+    <script>
+        function toggleNav() {
+            var navLinks = document.getElementById("navLinks");
+            if (navLinks.style.display === "flex") {
+                navLinks.style.display = "none";
+            } else {
+                navLinks.style.display = "flex";
+            }
+        }
+    </script>
 </body>
 </html>
