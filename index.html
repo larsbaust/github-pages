@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
         }
 
         .navbar {
@@ -21,12 +21,17 @@
         }
 
         .nav-links {
-            display: none;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            display: flex;
             flex-direction: column;
             list-style: none;
-            padding: 0;
-            margin: 0;
-            background-color: #333;
+            padding: 20px;
+            transition: left 0.3s ease-in-out;
         }
 
         .nav-links a {
@@ -35,6 +40,7 @@
             padding: 10px;
             text-align: center;
             background-color: #444;
+            margin: 5px 0;
         }
 
         .nav-links a:hover {
@@ -44,28 +50,25 @@
         .hamburger {
             cursor: pointer;
             width: 30px;
-            height: 25px;
+            height: 30px;
+            background-color: gray;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease-in-out;
+            align-items: center;
+            justify-content: center;
         }
 
         .nav-links.active {
-            display: flex;
+            left: 0;
         }
 
         @media (min-width: 600px) {
             .nav-links {
-                display: flex;
+                position: static;
+                width: auto;
+                height: auto;
                 flex-direction: row;
+                display: flex;
+                transition: none;
             }
 
             .hamburger {
@@ -76,11 +79,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="hamburger" onclick="toggleNav()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <div class="hamburger" onclick="toggleNav()"></div>
     </div>
     <ul class="nav-links" id="navLinks">
         <li><a href="#betriebe">Meine Betriebe</a></li>
@@ -94,11 +93,7 @@
     <script>
         function toggleNav() {
             var navLinks = document.getElementById("navLinks");
-            if (navLinks.classList.contains("active")) {
-                navLinks.classList.remove("active");
-            } else {
-                navLinks.classList.add("active");
-            }
+            navLinks.classList.toggle("active");
         }
     </script>
 </body>
