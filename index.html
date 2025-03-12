@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
         }
 
         .navbar {
@@ -23,6 +24,7 @@
             flex-direction: column;
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .nav-links a {
@@ -42,6 +44,15 @@
             font-size: 24px;
         }
 
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
         @media (min-width: 600px) {
             .nav-links {
                 display: flex;
@@ -56,7 +67,11 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="hamburger" onclick="toggleNav()">☰</div>
+        <div class="hamburger" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
     <ul class="nav-links" id="navLinks">
         <li><a href="#betriebe">Meine Betriebe</a></li>
