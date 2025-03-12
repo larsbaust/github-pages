@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
         }
 
         .navbar {
@@ -25,6 +26,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            background-color: #333;
         }
 
         .nav-links a {
@@ -92,7 +94,11 @@
     <script>
         function toggleNav() {
             var navLinks = document.getElementById("navLinks");
-            navLinks.classList.toggle("active");
+            if (navLinks.classList.contains("active")) {
+                navLinks.classList.remove("active");
+            } else {
+                navLinks.classList.add("active");
+            }
         }
     </script>
 </body>
