@@ -42,15 +42,23 @@
         .hamburger {
             cursor: pointer;
             font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
         }
 
         .hamburger span {
             display: block;
-            width: 25px;
+            width: 30px;
             height: 3px;
-            margin: 5px auto;
             background-color: white;
             transition: all 0.3s ease-in-out;
+        }
+
+        .nav-links.active {
+            display: flex;
         }
 
         @media (min-width: 600px) {
@@ -85,11 +93,7 @@
     <script>
         function toggleNav() {
             var navLinks = document.getElementById("navLinks");
-            if (navLinks.style.display === "flex") {
-                navLinks.style.display = "none";
-            } else {
-                navLinks.style.display = "flex";
-            }
+            navLinks.classList.toggle("active");
         }
     </script>
 </body>
