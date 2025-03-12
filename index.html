@@ -18,6 +18,7 @@
             cursor: pointer;
             background: none;
             border: none;
+            z-index: 1001;
         }
         .sidebar {
             position: fixed;
@@ -29,6 +30,7 @@
             color: white;
             transition: left 0.3s ease;
             padding-top: 60px;
+            z-index: 1000;
         }
         .sidebar a {
             display: block;
@@ -42,10 +44,24 @@
         .sidebar.active {
             left: 0;
         }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        .overlay.active {
+            display: block;
+        }
     </style>
 </head>
-<body onclick="closeMenu(event)">
+<body>
     <button class="menu-button" onclick="toggleMenu(event)">☰</button>
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
     <div class="sidebar" id="sidebar">
         <a href="#">Mein Betrieb</a>
         <a href="#">Reports</a>
@@ -53,16 +69,19 @@
     </div>
     <script>
         function toggleMenu(event) {
-            event.stopPropagation(); // Verhindert das Schließen beim Klicken auf den Button
+            event.stopPropagation();
             var sidebar = document.getElementById("sidebar");
+            var overlay = document.getElementById("overlay");
+            var isActive = sidebar.classList.contains("active");
             sidebar.classList.toggle("active");
+            overlay.classList.toggle("active", !isActive);
         }
         
-        function closeMenu(event) {
+        function closeMenu() {
             var sidebar = document.getElementById("sidebar");
-            if (sidebar.classList.contains("active") && !sidebar.contains(event.target)) {
-                sidebar.classList.remove("active");
-            }
+            var overlay = document.getElementById("overlay");
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
         }
     </script>
 </body>
